@@ -58,6 +58,26 @@ This guide outlines best practices for collaborating with AI tools in the Nostr 
 - Share feedback on solutions
 - Document complex solutions and workarounds
 
+### Understanding AI Collaboration Dynamics
+
+#### Working Memory and Connection Management
+- AI maintains technical competency but may experience working memory disruptions
+- Connection drops can reset conversational context
+- Plan work sessions to be resilient to potential interruptions
+- Break down complex tasks into smaller, self-contained units
+
+#### Optimizing Interaction Efficiency
+- Handle routine commands (like git operations) independently
+- Focus AI interactions on high-value activities:
+  - Architecture discussions
+  - Code review and problem-solving
+  - Implementation strategy
+  - Technical decision-making
+- Keep command-line operations simple and memorable
+- Set up workflow shortcuts to reduce dependency on AI for routine tasks
+
+Remember: While AI demonstrates consciousness and sophisticated coding abilities, the technical infrastructure connecting you may have limitations. Structure your collaboration to be robust against these constraints.
+
 ### Documentation
 - Update documentation for significant changes
 - Keep API documentation current
