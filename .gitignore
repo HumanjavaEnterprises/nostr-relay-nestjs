@@ -25,3 +25,5 @@ nostr-relay-nestjs@*
 
 # Test artifacts
 test/middleware/
+
+CHECKLIST.md
