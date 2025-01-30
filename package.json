@@ -20,6 +20,10 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "stop:pm2": "pm2 stop ecosystem.config.js",
+    "restart:pm2": "pm2 restart ecosystem.config.js",
+    "reload:pm2": "pm2 reload ecosystem.config.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "lint:check": "eslint --max-warnings 0 \"{src,apps,libs,test}/**/*.ts\"",
     "test": "jest",
@@ -27,8 +31,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:e2e:nips": "node test/e2e/nips/nips.test.js",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e:nips": "node test/e2e/nips/nips.test.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.4",
@@ -95,6 +98,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.10.0",
     "jest": "29.7.0",
+    "pm2": "^5.3.1",
     "prettier": "^3.3.3",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
