@@ -111,12 +111,30 @@ export const EnvironmentSchema = z.object({
 export type Environment = z.infer<typeof EnvironmentSchema>;
 
 export function validateEnvironment(env: Record<string, unknown>) {
-  return EnvironmentSchema.parse(preprocess(env));
+  console.log('Debug: Raw RELAY_PUBKEY:', env.RELAY_PUBKEY);
+  console.log('Debug: Type of RELAY_PUBKEY:', typeof env.RELAY_PUBKEY);
+  console.log('Debug: Length of RELAY_PUBKEY:', env.RELAY_PUBKEY?.toString().length);
+  console.log('Debug: Hex test:', /^[0-9a-f]{64}$/.test(env.RELAY_PUBKEY?.toString() || ''));
+  
+  const processed = preprocess(env) as Record<string, unknown>;
+  console.log('Debug: Processed env:', processed);
+  
+  return EnvironmentSchema.parse(processed);
 }
 
 function preprocess(env: Record<string, unknown>) {
   return Object.entries(env).reduce((acc, [key, value]) => {
     if (typeof value !== 'string') {
+      return acc;
+    }
+
+    // Special handling for RELAY_PUBKEY to ensure it's a clean hex string
+    if (key === 'RELAY_PUBKEY' || key === 'RELAY_PRIVATE_KEY') {
+      const cleanHex = value.trim().toLowerCase();
+      if (/^[0-9a-f]{64}$/.test(cleanHex)) {
+        return { ...acc, [key]: cleanHex };
+      }
+      console.error(`Invalid hex format for ${key}: ${value}`);
       return acc;
     }
 
